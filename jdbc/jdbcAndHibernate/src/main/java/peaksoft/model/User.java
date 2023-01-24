@@ -1,14 +1,14 @@
 package peaksoft.model;
 
 import javax.persistence.*;
-
-@Table
+@Entity
+@Table(name="users")
 public class User {
     @Id
     private Long id;
 
     @Column
-    private String name;
+    private String Name;
 
     @Column
     private String lastName;
@@ -19,13 +19,14 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastName, Byte age) {
-        this.name = name;
+    public User(Long id, String name, String lastName, Byte age) {
+        this.id = id;
+        Name = name;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public User(long id, String name, String lastName, byte age) {
+    public User(String name, String lastName, byte age) {
     }
 
     public Long getId() {
@@ -37,11 +38,11 @@ public class User {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public String getLastName() {
@@ -62,10 +63,11 @@ public class User {
 
     @Override
     public String toString() {
-        return "\nUser: " +
-                "\nid = " + id +
-                "\nname = " + name +
-                "\nlastName = " + lastName +
-                "\nage = " + age;
+        return "User{" +
+                "id=" + id +
+                ", Name='" + Name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
